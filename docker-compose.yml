@@ -1,0 +1,31 @@
+networks:
+  my_network:
+    driver: bridge
+version: '3'
+services:
+  # Dịch vụ cho ứng dụng Spring Boot
+  cinema-app:
+    build: .
+    ports:
+      - "8082:8081" # Ánh xạ cổng 8080 của máy cục bộ đến cổng 8080 của container
+    depends_on:
+      - sql-server-db # Chờ cho dịch vụ SQL Server khởi động trước khi bắt đầu ứng dụng Spring Boot
+    environment:
+      MSSQL_PORT: 1434
+      MSSQL_USER: sa
+      MSSQL_PASSWORD: Trung0000@a
+    networks:
+      - my_network
+    links:
+      - sql-server-db
+
+  # Dịch vụ cho cơ sở dữ liệu SQL Server
+  sql-server-db:
+    image: "mcr.microsoft.com/mssql/server:2019-latest" # Sử dụng hình ảnh SQL Server từ Docker Hub
+    environment:
+      SA_PASSWORD: "Trung0000@a" # Mật khẩu cho người dùng 'sa'
+      ACCEPT_EULA: "Y" # Chấp nhận điều khoản sử dụng
+    ports:
+      - "1434:1433" # Ánh xạ cổng 1433 của máy cục bộ đến cổng 1433 của container
+    networks:
+      - my_network

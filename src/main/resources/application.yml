@@ -1,0 +1,14 @@
+server:
+  port: 8081
+
+spring:
+  datasource:
+    url: jdbc:sqlserver://localhost:${MSSQL_PORT:1433};databaseName=CINEMA;encrypt=true;trustServerCertificate=true;
+    username: ${MSSQL_USER:sa}
+    password: ${MSSQL_PASSWORD:123456}
+    driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+  jpa:
+    hibernate:
+      ddl-auto: none
+    show-sql: true # Hiển thị các câu lệnh SQL trong console (tuỳ chọn)
+
