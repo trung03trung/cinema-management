@@ -1,5 +1,7 @@
 package com.example.cinemamanagement.service.impl;
 
+import com.example.cinemamanagement.dto.LoginDto;
+import com.example.cinemamanagement.dto.request.LoginRequest;
 import com.example.cinemamanagement.dto.request.NhanVienRequest;
 import com.example.cinemamanagement.entity.NhanVien;
 import com.example.cinemamanagement.entity.RapPhim;
@@ -13,6 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.List;
 
 @Service
 public class NhanVienServiceImpl implements NhanVienService {
@@ -32,5 +35,16 @@ public class NhanVienServiceImpl implements NhanVienService {
         BeanUtils.copyProperties(request,nv);
         nv.setRapPhim(rapPhim);
         nhanVienRepository.save(nv);
+    }
+
+    @Override
+    public LoginDto login(LoginRequest request) {
+        List<NhanVien> nhanViens = nhanVienRepository.findAllByMatKhauAndTenDangNhap(request.getPassWord(), request.getUserName());
+        if(nhanViens.isEmpty()){
+            return null;
+        }
+        LoginDto loginDto = new LoginDto();
+        BeanUtils.copyProperties(nhanViens.get(0),loginDto);
+        return loginDto;
     }
 }
