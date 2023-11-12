@@ -4,6 +4,7 @@ package com.example.cinemamanagement.entity;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.time.OffsetDateTime;
 
 
@@ -16,8 +17,8 @@ public class HoaDon {
     @Column(name = "MAHD",nullable = false, updatable = false)
     private String maHD;
 
-    @Column(name = "thoiGian",columnDefinition = "datetime2")
-    private OffsetDateTime thoiGian;
+    @Column(name = "THOIGIAN",columnDefinition = "datetime2")
+    private LocalDate thoiGian;
 
     @Column(name = "TONGTIEN")
     private Double tongTien;

@@ -9,6 +9,6 @@ import javax.transaction.Transactional;
 
 public interface HoaDonRepository extends JpaRepository<HoaDon,String> {
     @Transactional
-    @Query(value = " CREATEBILL :MaBv",nativeQuery = true)
+    @Query(value = "CREATEBILL :MaBv",nativeQuery = true)
     HoaDon createBill( @Param("MaBv") String maBanVe);
 }
