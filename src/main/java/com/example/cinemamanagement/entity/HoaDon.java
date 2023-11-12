@@ -13,7 +13,7 @@ public class HoaDon {
 
     @Id
     @Column(nullable = false, updatable = false)
-    private String maHd;
+    private String maHD;
 
     @Column(columnDefinition = "datetime2")
     private OffsetDateTime thoiGian;
@@ -29,5 +29,5 @@ public class HoaDon {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "ma_bv_id")
-    private BanVe maBv;
+    private BanVe maBV;
 }

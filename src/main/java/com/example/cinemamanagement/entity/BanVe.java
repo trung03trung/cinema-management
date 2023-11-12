@@ -12,7 +12,7 @@ public class BanVe {
 
     @Id
     @Column(nullable = false, updatable = false)
-    private String maBv;
+    private String maBV;
 
     @Column(columnDefinition = "datetime2")
     private OffsetDateTime thoiGian;

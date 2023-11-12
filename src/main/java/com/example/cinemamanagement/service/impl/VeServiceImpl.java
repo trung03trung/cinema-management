@@ -9,6 +9,8 @@ import com.example.cinemamanagement.dto.request.HoaDonRequest;
 import com.example.cinemamanagement.entity.BanVe;
 import com.example.cinemamanagement.entity.HoaDon;
 import com.example.cinemamanagement.entity.Ve;
+import com.example.cinemamanagement.repository.BanVeRepository;
+import com.example.cinemamanagement.repository.HoaDonRepository;
 import com.example.cinemamanagement.repository.VeRepository;
 import com.example.cinemamanagement.service.VeService;
 import org.springframework.beans.BeanUtils;
@@ -19,9 +21,13 @@ import org.springframework.stereotype.Service;
 public class VeServiceImpl implements VeService {
     @Autowired
     private VeRepository veRepository;
+    @Autowired
+    private HoaDonRepository hoaDonRepository;
+    @Autowired
+    private BanVeRepository banVeRepository;
     @Override
     public BanVeDto banVe(BanVeRequest request) {
-        BanVe banVe = veRepository.transaction(request.getMaNv(),request.getMaKh());
+        BanVe banVe = banVeRepository.transaction(request.getMaNv(),request.getMaKh());
         BanVeDto banVeDto =new BanVeDto();
         BeanUtils.copyProperties(banVe, banVeDto);
         return banVeDto;
@@ -37,7 +43,8 @@ public class VeServiceImpl implements VeService {
 
     @Override
     public HoaDonDto taoHoaDon(HoaDonRequest request) {
-        HoaDon hoaDon = veRepository.createBill(request.getMaNv(),request.getMaKh(), request.getMaBanVe());
+        HoaDon hoaDon = hoaDonRepository.createBill(request.getMaBanVe());
+
         HoaDonDto hoaDonDto = new HoaDonDto();
         BeanUtils.copyProperties(hoaDon,hoaDonDto);
         return hoaDonDto;
