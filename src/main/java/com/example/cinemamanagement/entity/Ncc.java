@@ -11,18 +11,19 @@ import java.util.Set;
 
 @Entity
 @Data
+
 public class Ncc {
 
     @Id
-    @Column(nullable = false, updatable = false)
+    @Column(name = "MANCC",nullable = false, updatable = false)
     private String maNcc;
 
-    @Column
+    @Column(name = "TEN")
     private String ten;
 
-    @Column
+    @Column(name = "DIACHI")
     private String diaChi;
 
-    @Column
+    @Column(name = "SDT")
     private String sdt;
 }

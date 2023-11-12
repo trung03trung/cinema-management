@@ -9,20 +9,21 @@ import javax.persistence.*;
 
 @Entity
 @Data
+@Table(name = "PHONG")
 public class Phong {
 
     @Id
-    @Column(nullable = false, updatable = false)
+    @Column(name = "MAPHONG",nullable = false, updatable = false)
     private String maPhong;
 
-    @Column
+    @Column(name = "SOHANG")
     private Integer soHang;
 
-    @Column
+    @Column(name = "SOCOT")
     private Integer soCot;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "ma_rap_phim_id")
+    @JoinColumn(name = "MARAPPHIM")
     private RapPhim maRapPhim;
 
 }

@@ -8,23 +8,24 @@ import java.time.OffsetDateTime;
 
 @Entity
 @Data
+@Table(name = "CHIEU")
 public class Chieu {
 
     @Id
-    @Column(nullable = false, updatable = false)
+    @Column(name = "MACHIEU",nullable = false, updatable = false)
     private String maChieu;
 
-    @Column(columnDefinition = "datetime2")
+    @Column(name = "THOIGIANCHIEU",columnDefinition = "datetime2")
     private OffsetDateTime thoiGianChieu;
 
-    @Column
+    @Column(name = "GIASUATCHIEU")
     private Double giaSuatChieu;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "ma_phong_id")
+    @JoinColumn(name = "MAPHONG")
     private Phong maPhong;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "ma_phim_id")
+    @JoinColumn(name = "MAPHIM")
     private Phim maPhim;
 }

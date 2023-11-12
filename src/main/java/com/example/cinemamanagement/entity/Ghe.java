@@ -9,19 +9,20 @@ import java.util.Set;
 
 @Entity
 @Data
+@Table(name = "GHE")
 public class Ghe {
 
     @Id
-    @Column(nullable = false, updatable = false)
+    @Column(name = "MAGHE",nullable = false, updatable = false)
     private String maGhe;
 
-    @Column
+    @Column(name = "HANG")
     private Integer hang;
 
-    @Column
+    @Column(name = "COTTHU")
     private Integer cotThu;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "ma_phong_id")
+    @JoinColumn(name = "MAPHONG")
     private Phong maPhong;
 }

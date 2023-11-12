@@ -9,25 +9,26 @@ import java.time.OffsetDateTime;
 
 @Entity
 @Data
+@Table(name = "HOADON")
 public class HoaDon {
 
     @Id
-    @Column(nullable = false, updatable = false)
+    @Column(name = "MAHD",nullable = false, updatable = false)
     private String maHD;
 
-    @Column(columnDefinition = "datetime2")
+    @Column(name = "thoiGian",columnDefinition = "datetime2")
     private OffsetDateTime thoiGian;
 
-    @Column
+    @Column(name = "TONGTIEN")
     private Double tongTien;
 
-    @Column
+    @Column(name = "GIAMGIA")
     private Double giamGia;
 
-    @Column
+    @Column(name = "THANHTIEN")
     private Double thanhTien;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "ma_bv_id")
+    @JoinColumn(name = "MABV")
     private BanVe maBV;
 }
