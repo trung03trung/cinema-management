@@ -1,9 +1,9 @@
 package com.example.cinemamanagement.dto;
 
-import javax.persistence.Column;
-import javax.persistence.Id;
+import lombok.Data;
 import java.time.LocalDate;
 
+@Data
 public class LoginDto {
 
     private String maNv;

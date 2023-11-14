@@ -14,7 +14,7 @@ import java.util.List;
 public interface VeRepository extends JpaRepository<Ve,String> {
 
 
-    @Query(value = " CREATETRANSACTION (:MaChieu,:MaGhe,:MaBanVe)",nativeQuery = true)
+    @Query(value = " ODERTICKET :MaChieu,:MaGhe,:MaBanVe",nativeQuery = true)
     Ve createTickKet(@Param("MaChieu") String maChieu,@Param("MaGhe") String maGhe,@Param("MaBanVe") String maBanVe);
 
 

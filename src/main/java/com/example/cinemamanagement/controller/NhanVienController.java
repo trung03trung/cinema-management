@@ -1,5 +1,6 @@
 package com.example.cinemamanagement.controller;
 
+import com.example.cinemamanagement.dto.LoginDto;
 import com.example.cinemamanagement.dto.request.LoginRequest;
 import com.example.cinemamanagement.dto.request.NhanVienRequest;
 import com.example.cinemamanagement.service.NhanVienService;
@@ -17,14 +18,14 @@ public class NhanVienController {
     @Autowired
     private NhanVienService nhanVienService;
 
-    @RequestMapping("/add")
+    @PostMapping("/add")
     public ResponseEntity<ResponseData<?>> addNhanVien(@RequestBody NhanVienRequest request){
         nhanVienService.addNhanVien(request);
         return ResponseEntity.ok(ResponseData.success());
     }
     @PostMapping("/login")
     public ResponseEntity<ResponseData<?>> login(@RequestBody LoginRequest request){
-        nhanVienService.login(request);
-        return ResponseEntity.ok(ResponseData.success());
+       LoginDto loginDto= nhanVienService.login(request);
+        return ResponseEntity.ok(ResponseData.success(loginDto));
     }
 }

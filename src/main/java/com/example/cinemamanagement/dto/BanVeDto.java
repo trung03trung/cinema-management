@@ -12,7 +12,7 @@ import java.time.OffsetDateTime;
 
 @Data
 public class BanVeDto {
-    private String maBv;
+    private String maBV;
 
     private OffsetDateTime thoiGian;
 

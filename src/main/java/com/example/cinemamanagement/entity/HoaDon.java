@@ -16,7 +16,7 @@ public class HoaDon {
     @Column(name = "MAHD",nullable = false, updatable = false)
     private String maHD;
 
-    @Column(name = "thoiGian",columnDefinition = "datetime2")
+    @Column(name = "THOIGIAN",columnDefinition = "datetime2")
     private OffsetDateTime thoiGian;
 
     @Column(name = "TONGTIEN")

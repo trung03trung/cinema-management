@@ -1,9 +1,11 @@
 package com.example.cinemamanagement.controller;
 
 import com.example.cinemamanagement.dto.BanVeDto;
+import com.example.cinemamanagement.dto.ChonVeDto;
 import com.example.cinemamanagement.dto.HoaDonDto;
 import com.example.cinemamanagement.dto.VeDto;
 import com.example.cinemamanagement.dto.request.BanVeRequest;
+import com.example.cinemamanagement.dto.request.ChonVeRequest;
 import com.example.cinemamanagement.dto.request.DatVeRequest;
 import com.example.cinemamanagement.dto.request.HoaDonRequest;
 import com.example.cinemamanagement.service.VeService;
@@ -20,6 +22,12 @@ import org.springframework.web.bind.annotation.RestController;
 public class VeController {
     @Autowired
     private VeService veService;
+
+    @PostMapping("/chon-ve")
+    public ResponseEntity<ResponseData<ChonVeDto>> chonVe(@RequestBody ChonVeRequest request){
+        ChonVeDto chonVeDto =  veService.chonVe(request);
+        return ResponseEntity.ok(ResponseData.success(chonVeDto));
+    }
     @PostMapping("/add")
     public ResponseEntity<ResponseData<VeDto>> datVe(@RequestBody DatVeRequest request){
       VeDto veDto =  veService.datVe(request);
